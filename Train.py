@@ -14,3 +14,14 @@ model = ultralytics.YOLO("yolov8n.pt")
 
 # Train on your dataset
 model.train(data="datasets/waste-detection-1/data.yaml", epochs=50, imgsz=640, batch=16, name="waste-detection-Prototype") #adjust parameters as needed
+
+# Run inference on a test image
+results = model("datasets/waste-detection-1/valid/images/example.jpg")
+
+# Visualize the results
+for r in results:
+    im_bgr = r.plot()  # plot predictions
+    im_rgb = cv2.cvtColor(im_bgr, cv2.COLOR_BGR2RGB)
+    plt.imshow(im_rgb)
+    plt.axis("off")
+    plt.show()
