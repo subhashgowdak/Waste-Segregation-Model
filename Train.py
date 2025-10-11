@@ -25,3 +25,6 @@ for r in results:
     plt.imshow(im_rgb)
     plt.axis("off")
     plt.show()
+
+#Export trained model weights
+model.export(format="onnx") # Options: onnx, torchscript, coreml, tflite
